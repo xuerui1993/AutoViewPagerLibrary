@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<declare-styleable name="AutoViewpager">
+		<attr name="dotSize" format="dimension"/>
+		<attr name="dotSrc" format="reference"/>
+		<attr name="duration" format="integer"/>
+		<attr name="isAuto" format="boolean"/>
+		<attr name="dotPosition" format="enum">
+			<enum name="left" value="0"/>
+			<enum name="center" value="1"/>
+			<enum name="right" value="2"/>
+		</attr>
+	</declare-styleable>
+</resources>
