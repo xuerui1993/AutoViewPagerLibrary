@@ -18,7 +18,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.alex.autoviewpager.R;
-import com.bumptech.glide.Glide;
+import com.alex.autoviewpager.loader.ImageLoader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,6 +55,7 @@ public class AutoViewpager extends RelativeLayout implements ViewPager.OnPageCha
 	String mLabelColor = "#ffffff";
 	private Drawable mDrawable;
 	private int mDotPosition;
+	private ImageLoader mImageloader;
 
 	public AutoViewpager(Context context) {
 		this(context, null);
@@ -78,6 +79,11 @@ public class AutoViewpager extends RelativeLayout implements ViewPager.OnPageCha
 		//释放资源
 		ta.recycle();
 	}
+
+	public void setImageloader(ImageLoader imageloader) {
+		this.mImageloader = imageloader;
+	}
+
 	public void setDotPosition(int dotPosition){
 		mDotPosition = dotPosition;
 	}
@@ -314,7 +320,7 @@ public class AutoViewpager extends RelativeLayout implements ViewPager.OnPageCha
 			imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
 			container.addView(imageView);
 			String url = mList.get(picPosition);
-			Glide.with(mContext).load(url).into(imageView);
+			mImageloader.displayImage(mContext,url,imageView);
 			imageView.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
